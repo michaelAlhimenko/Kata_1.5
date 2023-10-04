@@ -27,6 +27,7 @@
     }
     .fix__h2{
         height: 56px;
+        padding-left: 24px;
     }
     .button-unwrap__arrow--hide{
         transform: rotate(180deg);
@@ -172,6 +173,9 @@
     .services__image{
         width: 531px;
         height: 307px;
+    }
+    .fix__h2{
+        padding-left: 32px;
     }
     .fix__container{
         column-gap: 32px;
