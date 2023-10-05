@@ -56,8 +56,10 @@ catalogSliderInit ();
 
 window.addEventListener('resize', function(){
     let widthClient = window.innerWidth;
-
-    if (widthClient >= 767){
+    if (!swiper && widthClient < 767){
+        catalogSliderInit ();
+    }
+    if (widthClient > 767){
         catalogSliderDestroy();
     }
 });

@@ -83,6 +83,8 @@
     .button-unwrap{
         padding-left: 24px;
         display: flex;
+        font-weight: 500;
+        font-size: 16px;
     }
     .fix__h2{
         height: 56px;
