@@ -194,6 +194,11 @@ h1::before{
     padding: 0;
     display: none;
 }
+.button-unwrap:hover{
+    transform: scale(1.05);
+    transition: all 0.5s;
+    cursor: pointer;
+}
 .button-unwrap__arrow{
     margin-right: 8px;
     padding: 6px 8px;
@@ -362,7 +367,7 @@ h1::before{
     background-color: #F8F8F8;
 }
 .fix__wrap{
-    display: flex;
+    display: flex !important;
     justify-content: center;
     background-color: #F8F8F8;
     

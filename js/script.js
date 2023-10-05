@@ -14,22 +14,31 @@ let swiper = null;
 function catalogSliderInit () {
     if (!swiper) {
         swiper = new Swiper('.swiper', {
+            loop: true,
+            slidesPerView: 1.10,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
-            slidesPerView: 1.15,
+            keyboard:{
+                enabled: true,
+            },
+            
             breakpoints:{
                 350: {
-                    slidesPerView: 1.40,
+                    slidesPerView: 1.35,
                     spaceBetween: 17,
                 },
                 400: {
-                    slidesPerView: 1.6,
+                    slidesPerView: 1.55,
                     spaceBetween: 17,
                 },
                 450: {
-                    slidesPerView: 1.8,
+                    slidesPerView: 1.75,
+                    spaceBetween: 17,
+                },
+                550: {
+                    slidesPerView: 2,
                     spaceBetween: 17,
                 },
             }
@@ -43,43 +52,41 @@ function catalogSliderDestroy () {
     }
 }
 
+catalogSliderInit ();
+
 window.addEventListener('resize', function(){
     let widthClient = window.innerWidth;
-    if (widthClient <= 500){
-        catalogSliderInit ();
-    } else {
+
+    if (widthClient >= 767){
         catalogSliderDestroy();
     }
 });
 
-let button = document.querySelector('.button-unwrap');
+
+const button = document.querySelector('.button-unwrap');
 const fixBrandsBlock = document.querySelector('.fix__desc');
-const buttonContentHide =`
-<img src="./icons/icon.svg" class="button-unwrap__arrow button-unwrap__arrow--hide" alt="Arrow open">
-Скрыть`;
-const buttonContentShow =`
-<img src="./icons/icon.svg" class="button-unwrap__arrow" alt="Arrow open">
-Показать все`;
+const buttonText = button.querySelector('.button-unwrap__text');
+const buttonImg = button.querySelector('.button-unwrap__arrow');
 
-
-
-function hideShowBrandsBlock(classHide){
+function hideShowBrandsBlock(classHide, classArrowHide, textHide, textShow){
     fixBrandsBlock.classList.add(classHide);
-
+    
     function showHide(){
-        if (fixBrandsBlock.classList.contains(classHide)){
-            fixBrandsBlock.classList.remove(classHide);
-            button.innerHTML=buttonContentHide;
-        }else {
-            fixBrandsBlock.classList.add(classHide);
-            button.innerHTML=buttonContentShow;
-        }
-    }
+        fixBrandsBlock.classList.toggle(classHide);
+        buttonImg.classList.toggle(classArrowHide);
+        
+        if (!fixBrandsBlock.classList.contains(classHide)){
+            buttonText.innerText = textHide;
+        } else {
+            buttonText.innerText = textShow;
+        }   
+    }  
+
     return showHide;
 }
 
 
-button.addEventListener('click', hideShowBrandsBlock('fix__desc--hidden'));
+button.addEventListener('click', hideShowBrandsBlock('fix__desc--hidden','button-unwrap__arrow--hide','Скрыть','Показать все'));
 
 
 
